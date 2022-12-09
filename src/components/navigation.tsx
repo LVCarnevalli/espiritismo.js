@@ -76,11 +76,9 @@ const Navigation: React.FC<Props> = (props: Props) => {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Link to="/">
-                <Button key={item} sx={{ color: "#fff" }}>
-                  {item}
-                </Button>
-              </Link>
+              <Button key={item} sx={{ color: "#fff" }}>
+                <Link to="/">{item}</Link>
+              </Button>
             ))}
           </Box>
         </Toolbar>

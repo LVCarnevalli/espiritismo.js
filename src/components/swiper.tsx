@@ -2,27 +2,27 @@
 
 import * as React from "react";
 import { Virtual } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as ReactSwiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/virtual";
 
 interface Props {
-  slides: string[];
+  slides: any[];
 }
 
-const Question: React.FC<Props> = (props: Props) => {
+const Swiper: React.FC<Props> = (props: Props) => {
   return (
     <>
-      <Swiper modules={[Virtual]} virtual>
+      <ReactSwiper modules={[Virtual]} virtual>
         {props.slides.map((slideContent, index) => (
-          <SwiperSlide key={slideContent} virtualIndex={index}>
+          <SwiperSlide key={index} virtualIndex={index}>
             {slideContent}
           </SwiperSlide>
         ))}
-      </Swiper>
+      </ReactSwiper>
     </>
   );
 };
 
-export default Question;
+export default Swiper;
