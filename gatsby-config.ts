@@ -13,7 +13,7 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: "test",
+        trackingId: "todo",
       },
     },
     "gatsby-plugin-sitemap",
