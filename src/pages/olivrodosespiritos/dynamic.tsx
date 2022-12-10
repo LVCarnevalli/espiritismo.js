@@ -3,7 +3,7 @@ import type { HeadFC, PageProps } from "gatsby";
 import Reader from "../../components/olivrodosespiritos/reader";
 
 const DynamicPage: React.FC<PageProps> = () => {
-  return <Reader />;
+  return <Reader dynamic />;
 };
 
 export default DynamicPage;

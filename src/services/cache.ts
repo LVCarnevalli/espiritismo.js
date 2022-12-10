@@ -1,4 +1,8 @@
-import { OLivroDosEspiritosType } from "../share/types";
+import {
+  OLivroDosEspiritos,
+  DynamicQuestion,
+  CommonQuestion,
+} from "../share/cache-types";
 
 type ConfigType = {
   [key: string]: {
@@ -25,18 +29,35 @@ const Load = (key: string): Promise<any> => {
     });
 };
 
-export const GetOLivroDosEspiritos = (): OLivroDosEspiritosType | null => {
-  const data = localStorage.getItem("espiritismo.js.olivrodosespiritos");
+const Get = (key: string): any | null => {
+  const data = localStorage.getItem(key);
   if (data) {
     return JSON.parse(data);
   }
   return null;
 };
 
-export const LoadOLivroDosEspiritos = (): Promise<
-  OLivroDosEspiritosType | any
-> => {
+const Store = (key: string, value: any) => {
+  localStorage.setItem(key, JSON.stringify(value));
+};
+
+export const GetOLivroDosEspiritos = (): OLivroDosEspiritos | null =>
+  Get("espiritismo.js.olivrodosespiritos");
+
+export const LoadOLivroDosEspiritos = (): Promise<OLivroDosEspiritos | any> => {
   return Load("espiritismo.js.olivrodosespiritos").then((data: string) => {
     return Promise.resolve(data);
   });
 };
+
+export const StoreOLivroDosEspiritosDynamic = (data: DynamicQuestion) =>
+  Store("espiritismo.js.olivrodosespiritos.dynamic", data);
+
+export const GetOLivroDosEspiritosDynamic = (): DynamicQuestion | null =>
+  Get("espiritismo.js.olivrodosespiritos.dynamic");
+
+export const StoreOLivroDosEspiritosCommon = (data: CommonQuestion) =>
+  Store("espiritismo.js.olivrodosespiritos.common", data);
+
+export const GetOLivroDosEspiritosCommon = (): CommonQuestion | null =>
+  Get("espiritismo.js.olivrodosespiritos.common");
