@@ -18,6 +18,7 @@ import _ from "lodash";
 
 interface Props {
   dynamic?: boolean;
+  id?: string;
 }
 
 interface LoadedData {
@@ -85,14 +86,16 @@ const Reader: React.FC<Props> = (props: Props) => {
     }
 
     LoadOLivroDosEspiritos().then((data: OLivroDosEspiritos) => {
-      if (data) {
-        setLoadedData(processLoadedData(data.questions, props.dynamic));
+      if (!data || props.id) {
+        return;
       }
+
+      setLoadedData(processLoadedData(data.questions, props.dynamic));
     });
   });
 
   const storeIndex = (newIndex: number) => {
-    if (!loadedData) {
+    if (!loadedData || props.id) {
       return;
     }
 
@@ -110,24 +113,46 @@ const Reader: React.FC<Props> = (props: Props) => {
     }
   };
 
+  const renderLoading = () => <div>...</div>;
+
+  const renderQuestion = (question: Question) => (
+    <div>
+      <div dangerouslySetInnerHTML={{ __html: question.id }} />
+      <div dangerouslySetInnerHTML={{ __html: question.category }} />
+      <div dangerouslySetInnerHTML={{ __html: question.question }} />
+      <div dangerouslySetInnerHTML={{ __html: question.answer }} />
+    </div>
+  );
+
+  const renderSwiper = (loadedData: LoadedData) => {
+    return (
+      <Swiper
+        initialSlide={loadedData.index}
+        indexChange={storeIndex}
+        slides={loadedData.questions.map(renderQuestion)}
+      />
+    );
+  };
+
+  const renderView = (loadedData: LoadedData) => {
+    const question = loadedData.questions.filter(
+      (q: Question) => q.id == props.id
+    );
+
+    if (question.length == 0) {
+      return <div>invalid id</div>;
+    }
+
+    return renderQuestion(question[0]);
+  };
+
   return (
     <Layout>
-      {(!loadedData && <div>...</div>) || (
-        <Swiper
-          initialSlide={(loadedData as LoadedData).index}
-          indexChange={storeIndex}
-          slides={(loadedData as LoadedData).questions.map(
-            (question: Question) => (
-              <div>
-                <div dangerouslySetInnerHTML={{ __html: question.id }} />
-                <div dangerouslySetInnerHTML={{ __html: question.category }} />
-                <div dangerouslySetInnerHTML={{ __html: question.question }} />
-                <div dangerouslySetInnerHTML={{ __html: question.answer }} />
-              </div>
-            )
-          )}
-        />
-      )}
+      {!loadedData
+        ? renderLoading()
+        : props.id
+        ? renderView(loadedData)
+        : renderSwiper(loadedData)}
     </Layout>
   );
 };
