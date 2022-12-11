@@ -32,12 +32,7 @@ const Load = (key: string): Promise<any> => {
 };
 
 const Get = (key: string): any | null => {
-  if (!windowGlobal) {
-    console.log("not found windowGlobal");
-    return null;
-  }
-
-  const data = windowGlobal.localStorage.getItem(key);
+  const data = localStorage.getItem(key);
   if (data) {
     return JSON.parse(data);
   }
@@ -45,18 +40,18 @@ const Get = (key: string): any | null => {
 };
 
 const Store = (key: string, value: any) => {
-  if (!windowGlobal) {
-    console.log("not found windowGlobal");
-    return;
-  }
-
-  windowGlobal.localStorage.setItem(key, JSON.stringify(value));
+  localStorage.setItem(key, JSON.stringify(value));
 };
 
 export const GetOLivroDosEspiritos = (): OLivroDosEspiritos | null =>
   Get("espiritismo.js.olivrodosespiritos");
 
 export const LoadOLivroDosEspiritos = (): Promise<OLivroDosEspiritos | any> => {
+  const data = GetOLivroDosEspiritos();
+  if (data) {
+    return Promise.resolve(data);
+  }
+
   return Load("espiritismo.js.olivrodosespiritos").then((data: string) => {
     return Promise.resolve(data);
   });

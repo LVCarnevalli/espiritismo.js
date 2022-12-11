@@ -87,9 +87,7 @@ const Reader: React.FC<Props> = (props: Props) => {
     return null;
   };
 
-  const [loadedData, setLoadedData] = React.useState<LoadedData | null>(
-    getLoadedData()
-  );
+  const [loadedData, setLoadedData] = React.useState<LoadedData | null>();
 
   React.useEffect(() => {
     if (!loadedData) {
