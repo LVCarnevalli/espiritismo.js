@@ -90,7 +90,9 @@ const Reader: React.FC<Props> = (props: Props) => {
 
   if (!loadedData) {
     LoadOLivroDosEspiritos().then((data: OLivroDosEspiritos) => {
-      setLoadedData(processLoadedData(data.questions, props.dynamic));
+      if (data) {
+        setLoadedData(processLoadedData(data.questions, props.dynamic));
+      }
     });
   }
 

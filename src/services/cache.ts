@@ -1,3 +1,5 @@
+const windowGlobal = typeof window !== "undefined" && window;
+
 import {
   OLivroDosEspiritos,
   DynamicQuestion,
@@ -20,8 +22,12 @@ const Load = (key: string): Promise<any> => {
   return fetch(Configs[key].url)
     .then((response) => response.json())
     .then((data) => {
+      if (!windowGlobal) {
+        return Promise.reject();
+      }
+
       const value = JSON.stringify(data);
-      localStorage.setItem(key, value);
+      windowGlobal.localStorage.setItem(key, value);
       return Promise.resolve(data);
     })
     .catch((error) => {
@@ -30,7 +36,11 @@ const Load = (key: string): Promise<any> => {
 };
 
 const Get = (key: string): any | null => {
-  const data = localStorage.getItem(key);
+  if (!windowGlobal) {
+    return null;
+  }
+
+  const data = windowGlobal.localStorage.getItem(key);
   if (data) {
     return JSON.parse(data);
   }
@@ -38,7 +48,11 @@ const Get = (key: string): any | null => {
 };
 
 const Store = (key: string, value: any) => {
-  localStorage.setItem(key, JSON.stringify(value));
+  if (!windowGlobal) {
+    return;
+  }
+
+  windowGlobal.localStorage.setItem(key, JSON.stringify(value));
 };
 
 export const GetOLivroDosEspiritos = (): OLivroDosEspiritos | null =>
