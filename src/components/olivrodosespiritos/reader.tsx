@@ -34,16 +34,18 @@ function processLoadedData(
     const dynamicData: DynamicQuestion | null = GetOLivroDosEspiritosDynamic();
 
     let readed: Question[] = [],
+      resumed: Question[] = [],
       notReaded: Question[] = [];
 
     if (dynamicData) {
-      readed = dynamicData.readed.flatMap((id: string, index: number) =>
-        questions.filter(
-          (q: Question) =>
-            q.id == id ||
-            (index == dynamicData.readed.length - 1 &&
-              parseInt(q.id).toString() == id)
-        )
+      readed = dynamicData.readed.flatMap((id: string) =>
+        questions.filter((q: Question) => q.id == id)
+      );
+
+      resumed = questions.filter(
+        (q: Question) =>
+          parseInt(q.id) == parseInt(dynamicData.readed[readed.length - 1]) &&
+          readed.filter((r: Question) => r.id == q.id).length == 0
       );
     }
 
@@ -52,7 +54,8 @@ function processLoadedData(
         .filter(
           (q: Question) =>
             !isNaN(q.id as any) &&
-            readed.filter((r: Question) => r.id == q.id).length == 0
+            readed.filter((r: Question) => r.id == q.id).length == 0 &&
+            resumed.filter((r: Question) => r.id == q.id).length == 0
         )
         .map((q: Question) => q.id)
     ).flatMap((id: string) =>
@@ -61,7 +64,7 @@ function processLoadedData(
 
     if (dynamicData) {
       return {
-        questions: [...readed, ...notReaded],
+        questions: [...readed, ...resumed, ...notReaded],
         index: dynamicData.index,
       };
     }
