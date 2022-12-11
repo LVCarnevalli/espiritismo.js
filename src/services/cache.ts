@@ -22,13 +22,8 @@ const Load = (key: string): Promise<any> => {
   return fetch(Configs[key].url)
     .then((response) => response.json())
     .then((data) => {
-      if (!windowGlobal) {
-        console.log("not found windowGlobal");
-        return Promise.resolve();
-      }
-
       const value = JSON.stringify(data);
-      windowGlobal.localStorage.setItem(key, value);
+      localStorage.setItem(key, value);
       return Promise.resolve(data);
     })
     .catch((error) => {
