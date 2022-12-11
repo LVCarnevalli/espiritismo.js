@@ -44,7 +44,7 @@ const Store = (key: string, value: any) => {
 export const LoadOLivroDosEspiritos = (): Promise<OLivroDosEspiritos | any> => {
   const data = Get("espiritismo.js.olivrodosespiritos");
   if (data) {
-    return new Promise(() => data);
+    return new Promise((resolve) => resolve(data));
   }
 
   return Load("espiritismo.js.olivrodosespiritos").then((data: string) => {
