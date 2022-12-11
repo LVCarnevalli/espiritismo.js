@@ -21,7 +21,20 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
+const navItems = [
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "Dynamic",
+    path: "/olivrodosespiritos/dynamic",
+  },
+  {
+    name: "Common",
+    path: "/olivrodosespiritos/common",
+  },
+];
 
 const Navigation: React.FC<Props> = (props: Props) => {
   const { window } = props;
@@ -39,10 +52,10 @@ const Navigation: React.FC<Props> = (props: Props) => {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <Link to="/">
+          <ListItem key={item.name} disablePadding>
+            <Link to={item.path}>
               <ListItemButton sx={{ textAlign: "center" }}>
-                <ListItemText primary={item} />
+                <ListItemText primary={item.name} />
               </ListItemButton>
             </Link>
           </ListItem>
@@ -76,8 +89,8 @@ const Navigation: React.FC<Props> = (props: Props) => {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
-                <Link to="/">{item}</Link>
+              <Button key={item.name} sx={{ color: "#fff" }}>
+                <Link to={item.path}>{item.name}</Link>
               </Button>
             ))}
           </Box>
