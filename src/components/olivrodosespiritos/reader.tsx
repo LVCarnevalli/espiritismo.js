@@ -8,7 +8,6 @@ import {
 import Swiper from "../swiper";
 import Layout from "../layout";
 import {
-  GetOLivroDosEspiritos,
   LoadOLivroDosEspiritos,
   StoreOLivroDosEspiritosDynamic,
   GetOLivroDosEspiritosDynamic,
@@ -78,25 +77,18 @@ function processLoadedData(
 }
 
 const Reader: React.FC<Props> = (props: Props) => {
-  const getLoadedData = (): LoadedData | null => {
-    const data = GetOLivroDosEspiritos();
-    if (data) {
-      return processLoadedData(data.questions, props.dynamic);
-    }
-
-    return null;
-  };
-
   const [loadedData, setLoadedData] = React.useState<LoadedData | null>();
 
   React.useEffect(() => {
-    if (!loadedData) {
-      LoadOLivroDosEspiritos().then((data: OLivroDosEspiritos) => {
-        if (data) {
-          setLoadedData(processLoadedData(data.questions, props.dynamic));
-        }
-      });
+    if (loadedData) {
+      return;
     }
+
+    LoadOLivroDosEspiritos().then((data: OLivroDosEspiritos) => {
+      if (data) {
+        setLoadedData(processLoadedData(data.questions, props.dynamic));
+      }
+    });
   });
 
   const storeIndex = (newIndex: number) => {

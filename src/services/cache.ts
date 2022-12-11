@@ -1,5 +1,3 @@
-const windowGlobal = typeof window !== "undefined" && window;
-
 import {
   OLivroDosEspiritos,
   DynamicQuestion,
@@ -43,11 +41,8 @@ const Store = (key: string, value: any) => {
   localStorage.setItem(key, JSON.stringify(value));
 };
 
-export const GetOLivroDosEspiritos = (): OLivroDosEspiritos | null =>
-  Get("espiritismo.js.olivrodosespiritos");
-
 export const LoadOLivroDosEspiritos = (): Promise<OLivroDosEspiritos | any> => {
-  const data = GetOLivroDosEspiritos();
+  const data = Get("espiritismo.js.olivrodosespiritos");
   if (data) {
     return new Promise(() => data);
   }
