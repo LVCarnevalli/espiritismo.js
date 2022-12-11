@@ -91,13 +91,15 @@ const Reader: React.FC<Props> = (props: Props) => {
     getLoadedData()
   );
 
-  if (!loadedData) {
-    LoadOLivroDosEspiritos().then((data: OLivroDosEspiritos) => {
-      if (data) {
-        setLoadedData(processLoadedData(data.questions, props.dynamic));
-      }
-    });
-  }
+  React.useEffect(() => {
+    if (!loadedData) {
+      LoadOLivroDosEspiritos().then((data: OLivroDosEspiritos) => {
+        if (data) {
+          setLoadedData(processLoadedData(data.questions, props.dynamic));
+        }
+      });
+    }
+  });
 
   const storeIndex = (newIndex: number) => {
     if (!loadedData) {
