@@ -11,6 +11,18 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: [
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Espiritismo`,
+        short_name: `Espiritismo`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: `src/images/icon.png`,
+      },
+    },
+    {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: "todo",
@@ -18,6 +30,7 @@ const config: GatsbyConfig = {
     },
     "gatsby-plugin-sitemap",
     "gatsby-plugin-postcss",
+    "gatsby-plugin-offline",
   ],
   pathPrefix: "/espiritismo.js",
 };
