@@ -1,6 +1,5 @@
 - Adicionar na URL algum identificador de questão para realizar o compartilhamento;
 - Ver questões do suporte para PWA;
-- Fazer deploy com dominío;
 
 - Formatar o layout das telas;
 - Arrumar o carregando quando está baixandos as questões;
@@ -11,6 +10,7 @@
 - Configurar google analytics;
 - Adicionar hotjar no aplicativo;
 - Criar um novo ícone/favicon;
+- Adicionar dominio;
 
 - Criar tela inicial da leitura comum;
 - Ter uma opção de reiniciar a leitura comum;

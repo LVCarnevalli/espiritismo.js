@@ -41,8 +41,8 @@ function processLoadedData(
         questions.filter(
           (q: Question) =>
             q.id == id ||
-            (index == dynamicData.readed.length &&
-              parseInt(q.id) == parseInt(id))
+            (index == dynamicData.readed.length - 1 &&
+              parseInt(q.id).toString() == id)
         )
       );
     }
