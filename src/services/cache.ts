@@ -23,7 +23,8 @@ const Load = (key: string): Promise<any> => {
     .then((response) => response.json())
     .then((data) => {
       if (!windowGlobal) {
-        return Promise.resolve({});
+        console.log("not found windowGlobal");
+        return Promise.resolve();
       }
 
       const value = JSON.stringify(data);
@@ -37,6 +38,7 @@ const Load = (key: string): Promise<any> => {
 
 const Get = (key: string): any | null => {
   if (!windowGlobal) {
+    console.log("not found windowGlobal");
     return null;
   }
 
@@ -49,6 +51,7 @@ const Get = (key: string): any | null => {
 
 const Store = (key: string, value: any) => {
   if (!windowGlobal) {
+    console.log("not found windowGlobal");
     return;
   }
 
