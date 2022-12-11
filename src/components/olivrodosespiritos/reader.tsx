@@ -95,11 +95,7 @@ const Reader: React.FC<Props> = (props: Props) => {
     });
   });
 
-  const storeIndex = (newIndex: number) => {
-    if (!loadedData || props.view) {
-      return;
-    }
-
+  const storeIndex = (newIndex: number, loadedData: LoadedData) => {
     if (props.dynamic) {
       StoreOLivroDosEspiritosDynamic({
         index: newIndex,
@@ -129,7 +125,7 @@ const Reader: React.FC<Props> = (props: Props) => {
     return (
       <Swiper
         initialSlide={loadedData.index}
-        indexChange={storeIndex}
+        indexChange={(i) => storeIndex(i, loadedData)}
         slides={loadedData.questions.map(renderQuestion)}
       />
     );
