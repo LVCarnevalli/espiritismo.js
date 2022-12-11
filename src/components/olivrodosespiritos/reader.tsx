@@ -36,42 +36,37 @@ function processLoadedData(
     let readed: Question[] = [],
       notReaded: Question[] = [];
 
-    for (let i = 0; i < questions.length; i++) {
-      const q = questions[i];
-      if (
-        dynamicData &&
-        (dynamicData.readed.includes(q.id) ||
-          parseInt(dynamicData.readed[dynamicData.readed.length]) ==
-            parseInt(q.id))
-      ) {
-        readed = [...readed, q];
-      } else {
-        notReaded = [...notReaded, q];
-      }
+    if (dynamicData) {
+      readed = dynamicData.readed.flatMap((id: string, index: number) =>
+        questions.filter(
+          (q: Question) =>
+            q.id == id ||
+            (index == dynamicData.readed.length &&
+              parseInt(q.id) == parseInt(id))
+        )
+      );
     }
 
-    const notReadedRandom = _.shuffle(
-      notReaded.reduce((result: string[], current: Question) => {
-        if (isNaN(current.id as any)) {
-          return result;
-        }
-
-        return [...result, current.id];
-      }, [])
+    notReaded = _.shuffle(
+      questions
+        .filter(
+          (q: Question) =>
+            !isNaN(q.id as any) &&
+            readed.filter((r: Question) => r.id == q.id).length == 0
+        )
+        .map((q: Question) => q.id)
     ).flatMap((id: string) =>
-      notReaded.filter(
-        (question: Question) => parseInt(question.id) == parseInt(id)
-      )
+      questions.filter((q: Question) => parseInt(q.id) == parseInt(id))
     );
 
     if (dynamicData) {
       return {
-        questions: [...readed, ...notReadedRandom],
+        questions: [...readed, ...notReaded],
         index: dynamicData.index,
       };
     }
 
-    return { questions: notReadedRandom, index: 0 };
+    return { questions: notReaded, index: 0 };
   } else {
     const commonData: CommonQuestion | null = GetOLivroDosEspiritosCommon();
 
