@@ -1,15 +1,14 @@
 - Adicionar na URL algum identificador de questão para realizar o compartilhamento;
-- Ver questões do suporte para PWA;
 
 - Formatar o layout das telas;
 - Arrumar o carregando quando está baixandos as questões;
 - Ao clicar no header ir para o topo da tela;
 - Arrumar os menus.
 
+- Criar um novo ícone/favicon para o browser e PWA;
 - Configurar SEO/sitemap;
 - Configurar google analytics;
 - Adicionar hotjar no aplicativo;
-- Criar um novo ícone/favicon;
 - Adicionar dominio;
 
 - Criar tela inicial da leitura comum;

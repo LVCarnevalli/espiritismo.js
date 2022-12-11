@@ -19,13 +19,13 @@ const Configs: ConfigType = {
 };
 
 const Load = (key: string): Promise<any> => {
+  if (!windowGlobal) {
+    return Promise.reject();
+  }
+
   return fetch(Configs[key].url)
     .then((response) => response.json())
     .then((data) => {
-      if (!windowGlobal) {
-        return Promise.reject();
-      }
-
       const value = JSON.stringify(data);
       windowGlobal.localStorage.setItem(key, value);
       return Promise.resolve(data);

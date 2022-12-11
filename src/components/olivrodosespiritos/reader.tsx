@@ -92,10 +92,12 @@ const Reader: React.FC<Props> = (props: Props) => {
   );
 
   if (!loadedData) {
-    LoadOLivroDosEspiritos().then((data: OLivroDosEspiritos) => {
-      if (data) {
-        setLoadedData(processLoadedData(data.questions, props.dynamic));
-      }
+    React.useEffect(() => {
+      LoadOLivroDosEspiritos().then((data: OLivroDosEspiritos) => {
+        if (data) {
+          setLoadedData(processLoadedData(data.questions, props.dynamic));
+        }
+      });
     });
   }
 
