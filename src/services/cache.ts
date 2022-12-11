@@ -20,7 +20,7 @@ const Configs: ConfigType = {
 
 const Load = (key: string): Promise<any> => {
   if (!windowGlobal) {
-    return Promise.reject();
+    return Promise.resolve({});
   }
 
   return fetch(Configs[key].url)
