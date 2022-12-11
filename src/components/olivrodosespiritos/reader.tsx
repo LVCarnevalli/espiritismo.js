@@ -87,7 +87,7 @@ const Reader: React.FC<Props> = (props: Props) => {
     }
 
     LoadOLivroDosEspiritos().then((data: OLivroDosEspiritos) => {
-      if (!data || props.view) {
+      if (!data) {
         return;
       }
 
