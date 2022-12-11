@@ -23,7 +23,7 @@ const Load = (key: string): Promise<any> => {
     .then((response) => response.json())
     .then((data) => {
       if (!windowGlobal) {
-        return Promise.reject();
+        return Promise.resolve({});
       }
 
       const value = JSON.stringify(data);
