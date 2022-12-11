@@ -78,18 +78,27 @@ function processLoadedData(
 }
 
 const Reader: React.FC<Props> = (props: Props) => {
-  const [loadedData, setLoadedData] = React.useState<LoadedData | null>();
-
-  React.useEffect(() => {
-    if (loadedData) {
-      return;
+  const getLoadedData = (): LoadedData | null => {
+    const data = GetOLivroDosEspiritos();
+    if (data) {
+      return processLoadedData(data.questions, props.dynamic);
     }
 
-    LoadOLivroDosEspiritos().then((data: OLivroDosEspiritos) => {
-      if (data) {
-        setLoadedData(processLoadedData(data.questions, props.dynamic));
-      }
-    });
+    return null;
+  };
+
+  const [loadedData, setLoadedData] = React.useState<LoadedData | null>(
+    getLoadedData()
+  );
+
+  React.useEffect(() => {
+    if (!loadedData) {
+      LoadOLivroDosEspiritos().then((data: OLivroDosEspiritos) => {
+        if (data) {
+          setLoadedData(processLoadedData(data.questions, props.dynamic));
+        }
+      });
+    }
   });
 
   const storeIndex = (newIndex: number) => {

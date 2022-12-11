@@ -57,11 +57,6 @@ export const GetOLivroDosEspiritos = (): OLivroDosEspiritos | null =>
   Get("espiritismo.js.olivrodosespiritos");
 
 export const LoadOLivroDosEspiritos = (): Promise<OLivroDosEspiritos | any> => {
-  const data = GetOLivroDosEspiritos();
-  if (data) {
-    return Promise.resolve(data);
-  }
-
   return Load("espiritismo.js.olivrodosespiritos").then((data: string) => {
     return Promise.resolve(data);
   });
