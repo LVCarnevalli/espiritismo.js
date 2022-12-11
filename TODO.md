@@ -1,5 +1,3 @@
-- Adicionar na URL algum identificador de questão para realizar o compartilhamento;
-
 - Formatar o layout das telas;
 - Arrumar o carregando quando está baixandos as questões;
 - Ao clicar no header ir para o topo da tela;

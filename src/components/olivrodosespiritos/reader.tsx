@@ -18,6 +18,7 @@ import _ from "lodash";
 
 interface Props {
   dynamic?: boolean;
+  view?: boolean;
   id?: string;
 }
 
@@ -86,7 +87,7 @@ const Reader: React.FC<Props> = (props: Props) => {
     }
 
     LoadOLivroDosEspiritos().then((data: OLivroDosEspiritos) => {
-      if (!data || props.id) {
+      if (!data || props.view) {
         return;
       }
 
@@ -95,7 +96,7 @@ const Reader: React.FC<Props> = (props: Props) => {
   });
 
   const storeIndex = (newIndex: number) => {
-    if (!loadedData || props.id) {
+    if (!loadedData || props.view) {
       return;
     }
 
@@ -150,7 +151,7 @@ const Reader: React.FC<Props> = (props: Props) => {
     <Layout>
       {!loadedData
         ? renderLoading()
-        : props.id
+        : props.view
         ? renderView(loadedData)
         : renderSwiper(loadedData)}
     </Layout>
