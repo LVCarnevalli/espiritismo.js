@@ -19,7 +19,7 @@ const config: GatsbyConfig = {
     "gatsby-plugin-sitemap",
     "gatsby-plugin-postcss",
   ],
-  pathPrefix: "/espiritismo",
+  pathPrefix: "/espiritismo.js",
 };
 
 export default config;
