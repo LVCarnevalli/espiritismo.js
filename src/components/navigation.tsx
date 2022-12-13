@@ -23,15 +23,11 @@ interface Props {
 const drawerWidth = 240;
 const navItems = [
   {
-    name: "Home",
-    path: "/",
-  },
-  {
-    name: "Dynamic",
+    name: "PERGUNTAS DINÂMICAS",
     path: "/olivrodosespiritos/dynamic",
   },
   {
-    name: "Common",
+    name: "PERGUNTAS",
     path: "/olivrodosespiritos/common",
   },
 ];
@@ -47,7 +43,7 @@ const Navigation: React.FC<Props> = (props: Props) => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        <Link to="/">ESPIRITISMO</Link>
       </Typography>
       <Divider />
       <List>
@@ -85,7 +81,7 @@ const Navigation: React.FC<Props> = (props: Props) => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            <Link to="/">ESPIRITISMO</Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (

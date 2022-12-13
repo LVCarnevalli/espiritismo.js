@@ -13,8 +13,7 @@ const Layout: React.FC<Props> = (props: Props) => {
   return (
     <>
       <Navigation />
-      <Box component="main" sx={{ p: 3 }}>
-        <Toolbar />
+      <Box component="main" sx={{ p: 3 }} className="h-full">
         {props.children}
       </Box>
     </>
