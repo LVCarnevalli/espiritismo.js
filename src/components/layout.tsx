@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import Navigation from "./navigation";
 
 interface Props {
@@ -12,9 +11,11 @@ interface Props {
 const Layout: React.FC<Props> = (props: Props) => {
   return (
     <>
-      <Navigation />
-      <Box component="main" sx={{ p: 3 }} className="h-full">
-        {props.children}
+      <Box component="main" className="h-full flex flex-col">
+        <Box>
+          <Navigation />
+        </Box>
+        <Box className="flex-auto">{props.children}</Box>
       </Box>
     </>
   );

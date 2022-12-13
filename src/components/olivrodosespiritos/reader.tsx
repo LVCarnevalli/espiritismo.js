@@ -15,6 +15,7 @@ import {
   GetOLivroDosEspiritosCommon,
 } from "../../services/cache";
 import _ from "lodash";
+import "../../styles/reader.css";
 
 interface Props {
   dynamic?: boolean;
@@ -113,11 +114,23 @@ const Reader: React.FC<Props> = (props: Props) => {
   const renderLoading = () => <div>...</div>;
 
   const renderQuestion = (question: Question) => (
-    <div>
-      <div dangerouslySetInnerHTML={{ __html: question.id }} />
-      <div dangerouslySetInnerHTML={{ __html: question.category }} />
-      <div dangerouslySetInnerHTML={{ __html: question.question }} />
-      <div dangerouslySetInnerHTML={{ __html: question.answer }} />
+    <div className="p-10 text-justify">
+      <div
+        dangerouslySetInnerHTML={{ __html: question.question }}
+        className="font-semibold uppercase"
+      />
+      <div
+        dangerouslySetInnerHTML={{ __html: question.category }}
+        className="text-sm"
+      />
+      <div
+        dangerouslySetInnerHTML={{ __html: question.id }}
+        className="text-sm"
+      />
+      <div
+        dangerouslySetInnerHTML={{ __html: question.answer }}
+        className="pt-10"
+      />
     </div>
   );
 

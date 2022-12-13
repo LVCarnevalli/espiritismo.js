@@ -29,6 +29,15 @@ const config: GatsbyConfig = {
     "gatsby-plugin-sitemap",
     "gatsby-plugin-postcss",
     "gatsby-plugin-offline",
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Open+Sans:ital,wght@0,300;0,400;0,600;1,300`
+        ],
+        display: 'swap'
+      }
+    }
   ],
   pathPrefix: "/espiritismo.js",
 };
