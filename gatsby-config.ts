@@ -18,6 +18,18 @@ const config: GatsbyConfig = {
         start_url: `/`,
         display: `standalone`,
         icon: `src/images/icon.png`,
+        icons: [
+          {
+            src: `src/images/android-chrome-192x192.png`,
+            sizes: `192x192`,
+            type: `image/png`,
+          },
+          {
+            src: `src/images/android-chrome-512x512.png`,
+            sizes: `512x512`,
+            type: `image/png`,
+          },
+        ],
         theme_color: `#fff`,
       },
     },
