@@ -1,6 +1,3 @@
-- Formatar o layout das telas;
-- Arrumar o carregando quando está baixandos as questões;
-
 - Criar um novo ícone/favicon para o browser e PWA;
 - Configurar SEO/sitemap;
 - Configurar google analytics;
@@ -20,3 +17,4 @@
 - Adicionar opção de alterar tema e fontes;
 - Adicionar preces;
 - Adicionar outros livros;
+- Indicador de questões visualizadas;

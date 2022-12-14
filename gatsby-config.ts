@@ -33,11 +33,12 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `Open+Sans:ital,wght@0,300;0,400;0,600;1,300`
+          `Open+Sans:ital,wght@0,300;0,400;0,600;1,400`,
+          `Exo+2:wght@100;200;300;400;500;600;700;800;900`,
         ],
-        display: 'swap'
-      }
-    }
+        display: "swap",
+      },
+    },
   ],
   pathPrefix: "/espiritismo.js",
 };

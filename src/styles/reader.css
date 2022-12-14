@@ -1,11 +1,13 @@
 .bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .italic {
-    font-style: italic;
+  font-style: italic;
 }
 
 .citation {
-    margin-left: 20px;
+  display: block;
+  margin-top: 20px;
+  margin-left: 20px;
 }

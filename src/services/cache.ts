@@ -30,6 +30,10 @@ const Load = (key: string): Promise<any> => {
 };
 
 const Get = (key: string): any | null => {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
   const data = localStorage.getItem(key);
   if (data) {
     return JSON.parse(data);
@@ -50,6 +54,15 @@ export const LoadOLivroDosEspiritos = (): Promise<OLivroDosEspiritos | any> => {
   return Load("espiritismo.js.olivrodosespiritos").then((data: string) => {
     return Promise.resolve(data);
   });
+};
+
+export const GetOLivroDosEspiritos = (): OLivroDosEspiritos | null => {
+  const data = Get("espiritismo.js.olivrodosespiritos");
+  if (data) {
+    return data;
+  }
+
+  return null;
 };
 
 export const StoreOLivroDosEspiritosDynamic = (data: DynamicQuestion) =>

@@ -9,6 +9,7 @@ import Swiper from "../swiper";
 import Layout from "../layout";
 import {
   LoadOLivroDosEspiritos,
+  GetOLivroDosEspiritos,
   StoreOLivroDosEspiritosDynamic,
   GetOLivroDosEspiritosDynamic,
   StoreOLivroDosEspiritosCommon,
@@ -80,7 +81,17 @@ function processLoadedData(
 }
 
 const Reader: React.FC<Props> = (props: Props) => {
-  const [loadedData, setLoadedData] = React.useState<LoadedData | null>();
+  const oLivroDosEspiritos: OLivroDosEspiritos | null = GetOLivroDosEspiritos();
+  let getLoadedData: LoadedData | null = null;
+  if (oLivroDosEspiritos) {
+    getLoadedData = processLoadedData(
+      oLivroDosEspiritos.questions,
+      props.dynamic
+    );
+  }
+  const [loadedData, setLoadedData] = React.useState<LoadedData | null>(
+    getLoadedData
+  );
 
   React.useEffect(() => {
     if (loadedData) {
@@ -111,25 +122,44 @@ const Reader: React.FC<Props> = (props: Props) => {
     }
   };
 
-  const renderLoading = () => <div>...</div>;
+  const renderLoading = () => (
+    <div className="p-8 leading-5 max-w-sm w-full mx-auto">
+      <div className="animate-pulse flex space-x-4">
+        <div className="flex-1 space-y-6 py-1">
+          <div className="h-2 bg-slate-200 rounded"></div>
+          <div className="space-y-3">
+            <div className="grid grid-cols-3 gap-4">
+              <div className="h-2 bg-slate-200 rounded col-span-2"></div>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <div className="grid grid-cols-3 gap-4">
+              <div className="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+          </div>
+          <div className="h-2 bg-slate-200 rounded"></div>
+        </div>
+      </div>
+    </div>
+  );
 
   const renderQuestion = (question: Question) => (
-    <div className="p-10 text-justify">
+    <div className="p-8 leading-5">
       <div
         dangerouslySetInnerHTML={{ __html: question.question }}
         className="font-semibold uppercase"
       />
       <div
         dangerouslySetInnerHTML={{ __html: question.category }}
-        className="text-sm"
+        className="font-light text-sm"
       />
-      <div
-        dangerouslySetInnerHTML={{ __html: question.id }}
-        className="text-sm"
-      />
+      <div className="font-light text-sm">
+        QUESTÃO&nbsp;
+        <span dangerouslySetInnerHTML={{ __html: question.id }} />
+      </div>
       <div
         dangerouslySetInnerHTML={{ __html: question.answer }}
-        className="pt-10"
+        className="font-normal text-justify pt-8"
       />
     </div>
   );

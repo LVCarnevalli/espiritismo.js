@@ -9,7 +9,6 @@ import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -23,11 +22,11 @@ interface Props {
 const drawerWidth = 240;
 const navItems = [
   {
-    name: "PERGUNTAS DINÂMICAS",
+    name: "QUESTÕES DINÂMICAS",
     path: "/olivrodosespiritos/dynamic",
   },
   {
-    name: "PERGUNTAS",
+    name: "QUESTÕES",
     path: "/olivrodosespiritos/common",
   },
 ];
@@ -43,18 +42,23 @@ const Navigation: React.FC<Props> = (props: Props) => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        <Link to="/">ESPIRITISMO</Link>
+        <Link className="title" to="/">
+          ESPIRITISMO
+        </Link>
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item.name} disablePadding>
-            <Link to={item.path}>
-              <ListItemButton sx={{ textAlign: "center" }}>
-                <ListItemText primary={item.name} />
+          <Link key={`link-${item.name}`} to={item.path}>
+            <ListItem key={`item-${item.name}`} disablePadding>
+              <ListItemButton
+                key={`item-btn-${item.name}`}
+                className="title-navigation text-black text-sm"
+              >
+                {item.name}
               </ListItemButton>
-            </Link>
-          </ListItem>
+            </ListItem>
+          </Link>
         ))}
       </List>
     </Box>
@@ -65,8 +69,8 @@ const Navigation: React.FC<Props> = (props: Props) => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav">
-        <Toolbar>
+      <AppBar component="nav" sx={{ boxShadow: "none" }}>
+        <Toolbar className="bg-white text-black">
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -79,14 +83,25 @@ const Navigation: React.FC<Props> = (props: Props) => {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", sm: "block" },
+            }}
           >
-            <Link to="/">ESPIRITISMO</Link>
+            <Link className="title" to="/">
+              ESPIRITISMO
+            </Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item.name} sx={{ color: "#fff" }}>
-                <Link to={item.path}>{item.name}</Link>
+              <Button key={`btn-${item.name}`} sx={{ color: "#fff" }}>
+                <Link
+                  key={`link-${item.name}`}
+                  className="title-navigation text-black text-sm"
+                  to={item.path}
+                >
+                  {item.name}
+                </Link>
               </Button>
             ))}
           </Box>
@@ -112,9 +127,7 @@ const Navigation: React.FC<Props> = (props: Props) => {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ p: 3 }}>
-        <Toolbar />
-      </Box>
+      <Toolbar />
     </Box>
   );
 };

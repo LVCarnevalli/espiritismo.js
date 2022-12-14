@@ -8,3 +8,11 @@ body,
 #gatsby-focus-wrapper {
   height: 100%;
 }
+
+html {
+  font-family: "Open Sans", sans-serif;
+}
+
+.title {
+  font-family: "Exo 2", sans-serif;
+}
