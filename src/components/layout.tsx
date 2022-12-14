@@ -15,7 +15,9 @@ const Layout: React.FC<Props> = (props: Props) => {
         <Box>
           <Navigation />
         </Box>
-        <Box className="flex-auto">{props.children}</Box>
+        <Box p={{ xs: 3, sm: 4 }} className="flex-auto">
+          {props.children}
+        </Box>
       </Box>
     </>
   );

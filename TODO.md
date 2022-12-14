@@ -17,4 +17,4 @@
 - Adicionar opção de alterar tema e fontes;
 - Adicionar preces;
 - Adicionar outros livros;
-- Indicador de questões visualizadas;
+- Adicionar indicador de questões visualizadas;

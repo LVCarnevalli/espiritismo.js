@@ -6,8 +6,8 @@ import Box from "@mui/material/Box";
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
-      <div className="grid grid-cols-6 h-full text-center">
-        <div className="col-start-2 col-span-4 pt-16">
+      <div className="grid grid-cols-6 h-full">
+        <div className="col-start-1 col-span-7 sm:col-start-2 sm:col-span-4 text-justify">
           O aplicativo <span className="title">ESPIRITISMO</span> se baseia nas
           obras de Allan Kardec com a tradução e notas do J. Herculano Pires sem
           fins lucrativos. A utilização e leitura através do aplicativo não
@@ -18,7 +18,7 @@ const IndexPage: React.FC<PageProps> = () => {
             as questões.
           </div>
         </div>
-        <div className="col-start-1 col-end-7 flex flex-col justify-end p-4 text-sm">
+        <div className="col-start-1 col-end-7 flex flex-col justify-end p-4 text-sm text-center">
           <a
             href="https://github.com/LVCarnevalli/espiritismo.js"
             target="blank"

@@ -144,7 +144,7 @@ const Reader: React.FC<Props> = (props: Props) => {
   );
 
   const renderQuestion = (question: Question) => (
-    <div className="p-8 leading-5">
+    <div className="leading-5">
       <div
         dangerouslySetInnerHTML={{ __html: question.question }}
         className="font-semibold uppercase"
