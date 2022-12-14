@@ -1,4 +1,3 @@
-- Criar um novo ícone/favicon para o browser e PWA;
 - Configurar SEO/sitemap;
 - Configurar google analytics;
 - Adicionar hotjar no aplicativo;
