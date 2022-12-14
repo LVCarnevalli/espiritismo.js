@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-79317ff878d7fadcaad1.js"
+    "url": "webpack-runtime-ab75e8c33a85c7247c5a.js"
   },
   {
     "url": "framework-9b30aa3150f5f95f1944.js"
@@ -36,15 +36,15 @@ self.__precacheManifest = [
     "url": "styles.fb206fcef9f9374fb3bb.css"
   },
   {
-    "url": "app-9ed6b6ae9040239d3537.js"
+    "url": "app-65d8590d21f2c9705c2f.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "e1018c8418c7bbc12894f64e3e9edbc6"
+    "revision": "48da5ce672fe0a9f1b7cc0db08bae40f"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "81c3ed4e659fdfb1abb4b78485e081c8"
+    "revision": "0a1415d0e735da89d83b22d17b149ee1"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -154,7 +154,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/espiritismo.js/app-9ed6b6ae9040239d3537.js`))) {
+  if (!resources || !(await caches.match(`/espiritismo.js/app-65d8590d21f2c9705c2f.js`))) {
     return await fetch(event.request)
   }
 
