@@ -2,8 +2,10 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `espiritismo.js`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `Espiritismo`,
+    description: `Espiritismo`,
+    siteUrl: `https://www.espiritismo.dev`,
+    image: `/icon.png`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -34,9 +36,26 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: "todo",
+        trackingIds: ["G-ZQ7N683VCB"],
+        gtagConfig: {
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
+        pluginConfig: {
+          head: true,
+          respectDNT: true,
+          delayOnRouteUpdate: 0,
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        includeInDevelopment: false,
+        id: "3290064",
+        sv: "6",
       },
     },
     "gatsby-plugin-sitemap",
