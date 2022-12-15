@@ -20,5 +20,8 @@ html {
 
 .swiper-wrapper,
 .swiper-slide {
+  min-height: -webkit-fill-available;
+  min-height: -moz-available;
+  min-height: fill-available;
   min-height: calc(100vh - 128px);
 }
