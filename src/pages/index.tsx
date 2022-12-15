@@ -7,7 +7,7 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       <div className="grid grid-cols-6 h-full">
-        <div className="col-start-1 col-span-7 sm:col-start-2 sm:col-span-4 text-justify">
+        <div className="col-start-1 col-span-7 sm:col-start-2 sm:col-span-4 text-justify text-lg sm:text-base">
           O aplicativo <span className="title">ESPIRITISMO</span> se baseia nas
           obras de Allan Kardec com a tradução e notas do J. Herculano Pires sem
           fins lucrativos. A utilização e leitura através do aplicativo não

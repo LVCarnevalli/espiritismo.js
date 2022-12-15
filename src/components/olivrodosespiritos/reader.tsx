@@ -17,6 +17,7 @@ import {
 } from "../../services/cache";
 import _ from "lodash";
 import "../../styles/reader.css";
+import SwipeLeftIcon from "@mui/icons-material/SwipeLeft";
 
 interface Props {
   dynamic?: boolean;
@@ -147,30 +148,35 @@ const Reader: React.FC<Props> = (props: Props) => {
     <div className="leading-5">
       <div
         dangerouslySetInnerHTML={{ __html: question.question }}
-        className="font-semibold uppercase"
+        className="font-semibold text-lg sm:text-base uppercase"
       />
       <div
         dangerouslySetInnerHTML={{ __html: question.category }}
-        className="font-light text-sm"
+        className="font-light text-base sm:text-sm"
       />
-      <div className="font-light text-sm">
+      <div className="font-light text-base sm:text-sm">
         QUESTÃO&nbsp;
         <span dangerouslySetInnerHTML={{ __html: question.id }} />
       </div>
+      {(!loadedData || loadedData.index == 0) && (
+        <SwipeLeftIcon className="mt-2 ml-auto" sx={{ display: "block" }} />
+      )}
       <div
         dangerouslySetInnerHTML={{ __html: question.answer }}
-        className="font-normal text-justify pt-8"
+        className="font-normal text-lg sm:text-base text-justify pt-8"
       />
     </div>
   );
 
   const renderSwiper = (loadedData: LoadedData) => {
     return (
-      <Swiper
-        initialSlide={loadedData.index}
-        indexChange={(i) => storeIndex(i, loadedData)}
-        slides={loadedData.questions.map(renderQuestion)}
-      />
+      <>
+        <Swiper
+          initialSlide={loadedData.index}
+          indexChange={(i) => storeIndex(i, loadedData)}
+          slides={loadedData.questions.map(renderQuestion)}
+        />
+      </>
     );
   };
 

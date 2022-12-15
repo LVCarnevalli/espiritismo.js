@@ -53,7 +53,7 @@ const Navigation: React.FC<Props> = (props: Props) => {
             <ListItem key={`item-${item.name}`} disablePadding>
               <ListItemButton
                 key={`item-btn-${item.name}`}
-                className="title-navigation text-black text-sm"
+                className="title-navigation text-black text-base"
               >
                 {item.name}
               </ListItemButton>
@@ -69,7 +69,7 @@ const Navigation: React.FC<Props> = (props: Props) => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" sx={{ boxShadow: "none" }}>
+      <AppBar component="nav" elevation={0}>
         <Toolbar className="bg-white text-black">
           <IconButton
             color="inherit"
