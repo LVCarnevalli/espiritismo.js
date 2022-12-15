@@ -1,3 +1,4 @@
+- Verificar scroll e borda errada;
 - Configurar SEO/sitemap;
 - Configurar google analytics;
 - Adicionar hotjar no aplicativo;

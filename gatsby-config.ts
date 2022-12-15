@@ -50,7 +50,7 @@ const config: GatsbyConfig = {
       },
     },
   ],
-  pathPrefix: "/espiritismo.js",
+  pathPrefix: "/",
 };
 
 export default config;
