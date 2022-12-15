@@ -28,12 +28,11 @@ const Swiper: React.FC<Props> = (props: Props) => {
   return (
     <>
       <ReactSwiper
+        className="h-full"
         spaceBetween={100}
         ref={swiperRef}
         initialSlide={props.initialSlide}
         modules={[Virtual]}
-        autoHeight
-        observer
         virtual
       >
         {props.slides.map((slideContent, index) => (

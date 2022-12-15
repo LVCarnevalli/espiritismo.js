@@ -17,11 +17,3 @@ html {
   font-family: "Gugi", sans-serif;
   color: #222;
 }
-
-.swiper-wrapper,
-.swiper-slide {
-  min-height: -webkit-fill-available;
-  min-height: -moz-available;
-  min-height: fill-available;
-  min-height: calc(100vh - 128px);
-}
