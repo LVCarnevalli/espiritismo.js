@@ -50,7 +50,6 @@ const config: GatsbyConfig = {
       },
     },
   ],
-  pathPrefix: "/",
 };
 
 export default config;
