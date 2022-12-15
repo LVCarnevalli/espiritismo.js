@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-fd377da056667221cd46.js"
+    "url": "webpack-runtime-d9e1e59e43bf09acb36d.js"
   },
   {
     "url": "framework-9b30aa3150f5f95f1944.js"
@@ -36,15 +36,15 @@ self.__precacheManifest = [
     "url": "styles.9bddce54a0fa5c3e4e89.css"
   },
   {
-    "url": "app-65d8590d21f2c9705c2f.js"
+    "url": "app-ab57a45552ab9a0a39d5.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "bc937e62eb71826057e29e35e1451990"
+    "revision": "1e7327ed09f7a53fa8d5f0864dd45a78"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "0a1415d0e735da89d83b22d17b149ee1"
+    "revision": "7b55796c15da5212a9fcf114928f28f7"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -149,12 +149,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^/espiritismo.js`), ``)
+  pathname = pathname.replace(new RegExp(`^`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/espiritismo.js/app-65d8590d21f2c9705c2f.js`))) {
+  if (!resources || !(await caches.match(`/app-ab57a45552ab9a0a39d5.js`))) {
     return await fetch(event.request)
   }
 
@@ -167,7 +167,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/espiritismo.js/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })
