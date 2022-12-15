@@ -20,17 +20,20 @@ const Swiper: React.FC<Props> = (props: Props) => {
     if (!swiperRef.current) return;
     swiperRef.current.swiper.on("slideChange", function (swiper) {
       props.indexChange(swiper.activeIndex);
+      if (typeof window === "undefined") return;
+      window.scrollTo(0, 0);
     });
   }, []);
 
   return (
     <>
       <ReactSwiper
-        className="h-full"
         spaceBetween={100}
         ref={swiperRef}
         initialSlide={props.initialSlide}
         modules={[Virtual]}
+        autoHeight
+        observer
         virtual
       >
         {props.slides.map((slideContent, index) => (

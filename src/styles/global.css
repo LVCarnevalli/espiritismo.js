@@ -17,3 +17,8 @@ html {
   font-family: "Gugi", sans-serif;
   color: #222;
 }
+
+.swiper-wrapper,
+.swiper-slide {
+  min-height: calc(100vh - 128px);
+}
