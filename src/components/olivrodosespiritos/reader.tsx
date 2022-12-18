@@ -15,6 +15,7 @@ import {
   StoreOLivroDosEspiritosCommon,
   GetOLivroDosEspiritosCommon,
 } from "../../services/cache";
+import { Swipe } from "../../services/gtag";
 import _ from "lodash";
 import "../../styles/reader.css";
 import SwipeLeftIcon from "@mui/icons-material/SwipeLeft";
@@ -110,6 +111,7 @@ const Reader: React.FC<Props> = (props: Props) => {
 
   const storeIndex = (newIndex: number, loadedData: LoadedData) => {
     if (props.dynamic) {
+      Swipe("Dynamic");
       StoreOLivroDosEspiritosDynamic({
         index: newIndex,
         readed: loadedData.questions
@@ -117,6 +119,7 @@ const Reader: React.FC<Props> = (props: Props) => {
           .map((question) => question.id),
       });
     } else {
+      Swipe("Common");
       StoreOLivroDosEspiritosCommon({
         index: newIndex,
       });

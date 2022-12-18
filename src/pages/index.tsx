@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import Layout from "../components/layout";
-import Box from "@mui/material/Box";
+import { OutboundLink } from "gatsby-plugin-google-gtag";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -19,12 +19,12 @@ const IndexPage: React.FC<PageProps> = () => {
           </div>
         </div>
         <div className="col-start-1 col-end-7 flex flex-col justify-end p-4 text-sm text-center">
-          <a
+          <OutboundLink
             href="https://github.com/LVCarnevalli/espiritismo.js"
             target="blank"
           >
             GitHub
-          </a>
+          </OutboundLink>
         </div>
       </div>
     </Layout>
