@@ -1,4 +1,3 @@
-- Adicionar indicador de questões visualizadas;
 - Adicionar opção de alterar tema e fontes;
 - Adicionar opção de compartilhamento de questão;
 - Adicionar busca por capítulos;

@@ -68,9 +68,9 @@ const Navigation: React.FC<Props> = (props: Props) => {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" elevation={0}>
-        <Toolbar className="bg-white text-black">
+    <Box sx={{ display: "flex", minHeight: "64px" }}>
+      <AppBar component="nav" elevation={0} className="bg-white">
+        <Toolbar className="bg-white text-black" sx={{ minHeight: "64px" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"

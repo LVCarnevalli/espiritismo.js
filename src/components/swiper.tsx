@@ -1,7 +1,7 @@
 // https://swiperjs.com/react#virtual-slides
 
 import * as React from "react";
-import { Virtual } from "swiper";
+import { Virtual, Pagination } from "swiper";
 import { Swiper as ReactSwiper, SwiperSlide, SwiperRef } from "swiper/react";
 
 import "swiper/css";
@@ -18,22 +18,44 @@ const Swiper: React.FC<Props> = (props: Props) => {
 
   React.useEffect(() => {
     if (!swiperRef.current) return;
+    const autoHeight = () => {
+      // fix auto height swiper.js
+      if (typeof window === "undefined") return;
+
+      for (let el of document.querySelectorAll(
+        ".swiper-slide, .swiper-wrapper"
+      ) as any) {
+        el.style.minHeight = `${window.innerHeight - 142}px`; // discount menu, padding and pagination: 64px + 24px + 54px
+      }
+
+      window.scrollTo(0, 0);
+    };
+
     swiperRef.current.swiper.on("slideChange", function (swiper) {
       props.indexChange(swiper.activeIndex);
-      if (typeof window === "undefined") return;
-      window.scrollTo(0, 0);
+      autoHeight();
+    });
+
+    swiperRef.current.swiper.on("observerUpdate", function () {
+      autoHeight();
     });
   }, []);
 
   return (
     <>
       <ReactSwiper
-        className="h-full"
         spaceBetween={100}
         ref={swiperRef}
         initialSlide={props.initialSlide}
-        modules={[Virtual]}
+        modules={[Pagination, Virtual]}
+        observer
+        autoHeight
         virtual
+        pagination={{
+          type: "custom",
+          renderCustom: (swiper, current: number, total: number) =>
+            `${Math.trunc((current / total) * 100)}%`,
+        }}
       >
         {props.slides.map((slideContent, index) => (
           <SwiperSlide key={index} virtualIndex={index}>

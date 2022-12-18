@@ -144,29 +144,31 @@ const Reader: React.FC<Props> = (props: Props) => {
     </div>
   );
 
-  const renderQuestion = (question: Question) => (
-    <div className="leading-5">
-      <div
-        dangerouslySetInnerHTML={{ __html: question.question }}
-        className="font-semibold text-lg sm:text-base uppercase"
-      />
-      <div
-        dangerouslySetInnerHTML={{ __html: question.category }}
-        className="font-light text-base sm:text-sm"
-      />
-      <div className="font-light text-base sm:text-sm">
-        QUESTÃO&nbsp;
-        <span dangerouslySetInnerHTML={{ __html: question.id }} />
+  const renderQuestion = (question: Question) => {
+    return (
+      <div className="leading-5">
+        <div
+          dangerouslySetInnerHTML={{ __html: question.question }}
+          className="font-semibold text-lg sm:text-base uppercase"
+        />
+        <div
+          dangerouslySetInnerHTML={{ __html: question.category }}
+          className="font-light text-base sm:text-sm"
+        />
+        <div className="font-light text-base sm:text-sm">
+          QUESTÃO&nbsp;
+          <span dangerouslySetInnerHTML={{ __html: question.id }} />
+        </div>
+        {(!loadedData || loadedData.index == 0) && (
+          <SwipeLeftIcon className="mt-2 ml-auto" sx={{ display: "block" }} />
+        )}
+        <div
+          dangerouslySetInnerHTML={{ __html: question.answer }}
+          className="font-normal text-lg sm:text-base text-justify pt-8"
+        />
       </div>
-      {(!loadedData || loadedData.index == 0) && (
-        <SwipeLeftIcon className="mt-2 ml-auto" sx={{ display: "block" }} />
-      )}
-      <div
-        dangerouslySetInnerHTML={{ __html: question.answer }}
-        className="font-normal text-lg sm:text-base text-justify pt-8"
-      />
-    </div>
-  );
+    );
+  };
 
   const renderSwiper = (loadedData: LoadedData) => {
     return (
