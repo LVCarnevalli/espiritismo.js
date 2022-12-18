@@ -1,6 +1,7 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import Layout from "../components/layout";
+import SEO from "../components/seo";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 
 const IndexPage: React.FC<PageProps> = () => {
@@ -33,4 +34,4 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage;
 
-export const IndexHead: HeadFC = () => <title>Index</title>;
+export const Head: HeadFC = () => <SEO title="Espiritismo" />;

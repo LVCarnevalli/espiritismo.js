@@ -1,6 +1,7 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import Reader from "../../components/olivrodosespiritos/reader";
+import SEO from "../../components/seo";
 
 const DynamicPage: React.FC<PageProps> = () => {
   return <Reader dynamic />;
@@ -8,4 +9,6 @@ const DynamicPage: React.FC<PageProps> = () => {
 
 export default DynamicPage;
 
-export const DynamicHead: HeadFC = () => <title>O Livro dos Espíritos</title>;
+export const Head: HeadFC = () => (
+  <SEO title="O Livro dos Espíritos" pathname="/olivrodosespiritos/dynamic/" />
+);
