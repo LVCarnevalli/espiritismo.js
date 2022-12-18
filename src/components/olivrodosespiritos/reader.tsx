@@ -159,7 +159,7 @@ const Reader: React.FC<Props> = (props: Props) => {
           QUESTÃO&nbsp;
           <span dangerouslySetInnerHTML={{ __html: question.id }} />
         </div>
-        {(!loadedData || loadedData.index == 0) && (
+        {(!loadedData || loadedData.index == 0) && !props.view && (
           <SwipeLeftIcon className="mt-2 ml-auto" sx={{ display: "block" }} />
         )}
         <div
