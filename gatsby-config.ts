@@ -3,7 +3,7 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Espiritismo`,
-    description: `Espiritismo`,
+    description: `O aplicativo Espiritismo têm o objetivo de agrupar conteúdos espíritas e trazer até você de maneira fácil.`,
     siteUrl: `https://www.espiritismo.dev`,
     image: `/icon.png`,
     keywords: ["espiritismo", "espirita", "kardec", "o livro dos espiritos"],
@@ -67,6 +67,14 @@ const config: GatsbyConfig = {
       options: {
         fonts: [`Open+Sans:ital,wght@0,300;0,400;0,600;1,400`, `Gugi`],
         display: "swap",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://www.espiritismo.dev",
+        sitemap: "https://www.espiritismo.dev/sitemap-index.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
       },
     },
   ],
