@@ -26,15 +26,16 @@ html {
 }
 
 body {
-  --titleColor: #222;
+  --textColor: rgb(23 23 23);
   --bgColor: #fff;
 }
 
 body.dark {
-  --titleColor: #fff;
+  --textColor: #fff;
   --bgColor: rgb(23 23 23);
 }
 
 body {
   background-color: var(--bgColor);
+  color: var(--textColor);
 }

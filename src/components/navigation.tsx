@@ -42,9 +42,16 @@ const Navigation: React.FC<Props> = (props: Props) => {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{
+        textAlign: "center",
+        backgroundColor: "var(--bgColor)",
+        color: "var(--textColor)",
+      }}
+    >
       <Typography variant="h6" sx={{ my: 2 }}>
-        <Link className="title" to="/" style={{ color: "var(--titleColor)" }}>
+        <Link className="title" to="/">
           ESPIRITISMO
         </Link>
       </Typography>
@@ -55,7 +62,7 @@ const Navigation: React.FC<Props> = (props: Props) => {
             <ListItemButton
               color="inherit"
               key={`item-btn-${item.name}`}
-              className="text-black dark:text-white text-base"
+              className="text-base"
               onClick={() => navigate(item.path)}
             >
               {item.name}
@@ -74,7 +81,7 @@ const Navigation: React.FC<Props> = (props: Props) => {
       <AppBar
         component="nav"
         elevation={0}
-        sx={{ backgroundColor: "var(--bgColor)", color: "var(--titleColor)" }}
+        sx={{ backgroundColor: "var(--bgColor)", color: "var(--textColor)" }}
       >
         <Toolbar sx={{ minHeight: "64px" }}>
           <IconButton
