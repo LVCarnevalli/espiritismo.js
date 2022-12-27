@@ -33,7 +33,7 @@ const config: GatsbyConfig = {
             type: `image/png`,
           },
         ],
-        theme_color: `#fff`,
+        theme_color_in_head: false,
       },
     },
     {

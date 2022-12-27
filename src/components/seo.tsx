@@ -1,6 +1,8 @@
 import React from "react";
 import { useSiteMetadata } from "../hooks/use-site-metadata";
 
+const ReactHelmet = require("react-helmet");
+
 const SEO = ({ title, description, pathname, children }: any) => {
   const {
     title: defaultTitle,
@@ -21,6 +23,8 @@ const SEO = ({ title, description, pathname, children }: any) => {
   return (
     <>
       <title>{seo.title}</title>
+
+      <ReactHelmet.Helmet></ReactHelmet.Helmet>
 
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />

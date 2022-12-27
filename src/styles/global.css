@@ -34,3 +34,7 @@ body.dark {
   --titleColor: #fff;
   --bgColor: rgb(23 23 23);
 }
+
+body {
+  background-color: var(--bgColor);
+}

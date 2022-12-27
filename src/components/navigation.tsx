@@ -71,14 +71,21 @@ const Navigation: React.FC<Props> = (props: Props) => {
 
   return (
     <Box sx={{ display: "flex", minHeight: "64px" }}>
-      <AppBar component="nav" elevation={0} color="transparent">
+      <AppBar
+        component="nav"
+        elevation={0}
+        sx={{ backgroundColor: "var(--bgColor)", color: "var(--titleColor)" }}
+      >
         <Toolbar sx={{ minHeight: "64px" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{
+              mr: 2,
+              display: { sm: "none" },
+            }}
           >
             <MenuIcon />
           </IconButton>
@@ -90,11 +97,7 @@ const Navigation: React.FC<Props> = (props: Props) => {
               display: { xs: "none", sm: "block" },
             }}
           >
-            <Link
-              className="title"
-              to="/"
-              style={{ color: "var(--titleColor)" }}
-            >
+            <Link className="title" to="/">
               ESPIRITISMO
             </Link>
           </Typography>
@@ -104,7 +107,7 @@ const Navigation: React.FC<Props> = (props: Props) => {
                 color="inherit"
                 key={`btn-${item.name}`}
                 onClick={() => navigate(item.path)}
-                className="text-black dark:text-white text-sm"
+                className="text-sm"
               >
                 {item.name}
               </Button>
