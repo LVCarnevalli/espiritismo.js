@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkespiritismo_js=self.webpackChunkespiritismo_js||[]).push([[653],{9081:function(e,t,s){s.r(t),s.d(t,{CommonHead:function(){return o}});var i=s(7294),n=s(8053),r=s(1181);t.default=()=>i.createElement(n.Z,null);const o=()=>i.createElement(r.Z,{title:"O Livro dos Espíritos"})}}]);
-//# sourceMappingURL=component---src-pages-olivrodosespiritos-common-tsx-245f5495ae973ec4ba81.js.map

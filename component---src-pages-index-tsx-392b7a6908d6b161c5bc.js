@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkespiritismo_js=self.webpackChunkespiritismo_js||[]).push([[691],{7200:function(e,t,n){n.r(t),n.d(t,{IndexHead:function(){return l}});var s=n(7294),a=n(2582),i=n(8720);t.default=()=>s.createElement(a.Z,null,s.createElement(i.Z,{className:"text-center"},s.createElement("a",{href:"https://github.com/LVCarnevalli/espiritismo.js",target:"blank"},"Github")));const l=()=>s.createElement("title",null,"Index")}}]);
-//# sourceMappingURL=component---src-pages-index-tsx-392b7a6908d6b161c5bc.js.map
