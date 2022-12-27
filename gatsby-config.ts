@@ -61,6 +61,7 @@ const config: GatsbyConfig = {
     },
     "gatsby-plugin-sitemap",
     "gatsby-plugin-postcss",
+    "gatsby-plugin-dark-mode",
     "gatsby-plugin-offline",
     {
       resolve: `gatsby-plugin-google-fonts`,

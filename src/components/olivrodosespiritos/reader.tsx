@@ -19,6 +19,9 @@ import { Swipe } from "../../services/gtag";
 import _ from "lodash";
 import "../../styles/reader.css";
 import SwipeLeftIcon from "@mui/icons-material/SwipeLeft";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import IconButton from "@mui/material/IconButton";
+import { navigate } from "gatsby";
 
 interface Props {
   dynamic?: boolean;
@@ -150,10 +153,25 @@ const Reader: React.FC<Props> = (props: Props) => {
   const renderQuestion = (question: Question) => {
     return (
       <div className="leading-5">
-        <div
-          dangerouslySetInnerHTML={{ __html: question.question }}
-          className="font-semibold text-lg sm:text-base uppercase"
-        />
+        <div>
+          <div
+            dangerouslySetInnerHTML={{ __html: question.question }}
+            className="inline font-semibold text-lg sm:text-base uppercase"
+          />
+          {(props.view && <div className="h-1" />) || (
+            <IconButton
+              size="small"
+              aria-label="copy"
+              onClick={() =>
+                navigator.clipboard.writeText(
+                  `${location.origin}/olivrodosespiritos/share?id=${question.id}`
+                )
+              }
+            >
+              <ContentCopyIcon fontSize="inherit" className="dark:text-white" />
+            </IconButton>
+          )}
+        </div>
         <div
           dangerouslySetInnerHTML={{ __html: question.category }}
           className="font-light text-base sm:text-sm"
@@ -163,7 +181,10 @@ const Reader: React.FC<Props> = (props: Props) => {
           <span dangerouslySetInnerHTML={{ __html: question.id }} />
         </div>
         {(!loadedData || loadedData.index == 0) && !props.view && (
-          <SwipeLeftIcon className="mt-2 ml-auto" sx={{ display: "block" }} />
+          <SwipeLeftIcon
+            className="mt-2 ml-auto dark:text-white"
+            sx={{ display: "block" }}
+          />
         )}
         <div
           dangerouslySetInnerHTML={{ __html: question.answer }}
@@ -191,7 +212,7 @@ const Reader: React.FC<Props> = (props: Props) => {
     );
 
     if (question.length == 0) {
-      return <div>invalid id</div>;
+      return navigate("/");
     }
 
     return renderQuestion(question[0]);

@@ -7,7 +7,7 @@ import SEO from "../../components/seo";
 const SharePage: React.FC<PageProps> = () => {
   const [idParam, setIdParam, initialized] = useQueryParamString("id", "");
 
-  return <Reader id={idParam} view />;
+  return (initialized && <Reader id={idParam} view />) || null;
 };
 
 export default SharePage;

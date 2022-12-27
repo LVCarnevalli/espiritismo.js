@@ -11,7 +11,10 @@ interface Props {
 const Layout: React.FC<Props> = (props: Props) => {
   return (
     <>
-      <Box component="main" className="h-full flex flex-col">
+      <Box
+        component="main"
+        className="h-full flex flex-col dark:bg-neutral-900 dark:text-white"
+      >
         <Box>
           <Navigation />
         </Box>

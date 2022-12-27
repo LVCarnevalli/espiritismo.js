@@ -1,9 +1,5 @@
-- Adicionar opção de alterar tema e fontes;
-- Adicionar opção de compartilhamento de questão;
 - Adicionar busca por capítulos;
 - Ter uma opção de reiniciar a leitura;
 - Configurar i18n e tradução;
 - Adicionar outros livros;
-- Inserir tutorial de como adicionar o aplicativo na tela inicial;
-- Inserir tutorial de como fazer tradução;
 - Adicionar preces;

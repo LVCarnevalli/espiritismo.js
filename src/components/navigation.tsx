@@ -14,6 +14,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link } from "gatsby";
+import ThemeToggle from "./theme";
+import { navigate } from "gatsby";
 
 interface Props {
   window?: () => Window;
@@ -42,23 +44,23 @@ const Navigation: React.FC<Props> = (props: Props) => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        <Link className="title" to="/">
+        <Link className="title" to="/" style={{ color: "var(--titleColor)" }}>
           ESPIRITISMO
         </Link>
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
-          <Link key={`link-${item.name}`} to={item.path}>
-            <ListItem key={`item-${item.name}`} disablePadding>
-              <ListItemButton
-                key={`item-btn-${item.name}`}
-                className="title-navigation text-black text-base"
-              >
-                {item.name}
-              </ListItemButton>
-            </ListItem>
-          </Link>
+          <ListItem key={`item-${item.name}`} disablePadding>
+            <ListItemButton
+              color="inherit"
+              key={`item-btn-${item.name}`}
+              className="text-black dark:text-white text-base"
+              onClick={() => navigate(item.path)}
+            >
+              {item.name}
+            </ListItemButton>
+          </ListItem>
         ))}
       </List>
     </Box>
@@ -69,8 +71,8 @@ const Navigation: React.FC<Props> = (props: Props) => {
 
   return (
     <Box sx={{ display: "flex", minHeight: "64px" }}>
-      <AppBar component="nav" elevation={0} className="bg-white">
-        <Toolbar className="bg-white text-black" sx={{ minHeight: "64px" }}>
+      <AppBar component="nav" elevation={0} color="transparent">
+        <Toolbar sx={{ minHeight: "64px" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -88,23 +90,27 @@ const Navigation: React.FC<Props> = (props: Props) => {
               display: { xs: "none", sm: "block" },
             }}
           >
-            <Link className="title" to="/">
+            <Link
+              className="title"
+              to="/"
+              style={{ color: "var(--titleColor)" }}
+            >
               ESPIRITISMO
             </Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={`btn-${item.name}`} sx={{ color: "#fff" }}>
-                <Link
-                  key={`link-${item.name}`}
-                  className="title-navigation text-black text-sm"
-                  to={item.path}
-                >
-                  {item.name}
-                </Link>
+              <Button
+                color="inherit"
+                key={`btn-${item.name}`}
+                onClick={() => navigate(item.path)}
+                className="text-black dark:text-white text-sm"
+              >
+                {item.name}
               </Button>
             ))}
           </Box>
+          <ThemeToggle />
         </Toolbar>
       </AppBar>
       <Box component="nav">
@@ -119,6 +125,7 @@ const Navigation: React.FC<Props> = (props: Props) => {
           sx={{
             display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
+              backgroundColor: "var(--bgColor)",
               boxSizing: "border-box",
               width: drawerWidth,
             },
