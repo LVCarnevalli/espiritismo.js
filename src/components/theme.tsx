@@ -11,7 +11,10 @@ const ThemeToggler: React.FC = () => {
       {({ theme, toggleTheme }: any) => (
         <>
           <ReactHelmet.Helmet>
-            <meta name="theme-color" content={theme} />
+            <meta
+              name="theme-color"
+              content={theme === "light" ? "#ffffff" : "#171717"}
+            />
           </ReactHelmet.Helmet>
           <IconButton
             sx={{ marginLeft: "auto" }}
