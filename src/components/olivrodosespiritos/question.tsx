@@ -19,7 +19,7 @@ const Question: React.FC<Props> = (props: Props) => {
   return (
     <>
       <div className="leading-5">
-        <div>
+        <h1>
           <div
             dangerouslySetInnerHTML={{ __html: props.question }}
             className="inline font-semibold text-lg sm:text-base uppercase"
@@ -52,25 +52,31 @@ const Question: React.FC<Props> = (props: Props) => {
               &nbsp;LINK COPIADO
             </div>
           )}
-        </div>
-        <div
-          dangerouslySetInnerHTML={{ __html: props.category }}
-          className="font-light text-base sm:text-sm"
-        />
-        <div className="font-light text-base sm:text-sm">
-          QUESTÃO&nbsp;
-          <span dangerouslySetInnerHTML={{ __html: props.id }} />
-        </div>
+        </h1>
+        <h3>
+          <div
+            dangerouslySetInnerHTML={{ __html: props.category }}
+            className="font-light text-base sm:text-sm"
+          />
+        </h3>
+        <h3>
+          <div className="font-light text-base sm:text-sm">
+            QUESTÃO&nbsp;
+            <span dangerouslySetInnerHTML={{ __html: props.id }} />
+          </div>
+        </h3>
         {props.first && !props.view && (
           <SwipeLeftIcon
             className="mt-2 ml-auto dark:text-white"
             sx={{ display: "block" }}
           />
         )}
-        <div
-          dangerouslySetInnerHTML={{ __html: props.answer }}
-          className="font-normal text-lg sm:text-base text-justify pt-8"
-        />
+        <h2>
+          <div
+            dangerouslySetInnerHTML={{ __html: props.answer }}
+            className="font-normal text-lg sm:text-base text-justify pt-8"
+          />
+        </h2>
       </div>
     </>
   );
