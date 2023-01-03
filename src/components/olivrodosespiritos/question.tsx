@@ -48,7 +48,7 @@ const Question: React.FC<Props> = (props: Props) => {
             />
           </IconButton>
           {open && (
-            <div className="inline text-sm font-light dark:text-white">
+            <div className="inline font-light text-base sm:text-sm dark:text-white">
               &nbsp;LINK COPIADO
             </div>
           )}
