@@ -1,5 +1,3 @@
-// https://www.codeconcisely.com/posts/how-to-add-navigation-in-gatsby/
-
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Navigation from "./navigation";

@@ -25,17 +25,29 @@ html {
   padding-bottom: 15px;
 }
 
+/* Dark mode */
 body {
   --textColor: rgb(23 23 23);
   --bgColor: #fff;
 }
-
 body.dark {
   --textColor: #fff;
   --bgColor: rgb(23 23 23);
 }
-
 body {
   background-color: var(--bgColor);
   color: var(--textColor);
+}
+
+/* Dynamic CSS */
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
+.citation {
+  display: block;
+  margin-top: 20px;
+  margin-left: 20px;
 }

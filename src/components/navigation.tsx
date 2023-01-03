@@ -1,5 +1,3 @@
-// https://mui.com/material-ui/react-app-bar/
-
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -22,6 +20,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
+const title = "ESPIRITISMO";
 const navItems = [
   {
     name: "QUESTÕES DINÂMICAS",
@@ -52,7 +51,7 @@ const Navigation: React.FC<Props> = (props: Props) => {
     >
       <Typography variant="h6" sx={{ my: 2 }}>
         <Link className="title" to="/">
-          ESPIRITISMO
+          {title}
         </Link>
       </Typography>
       <Divider />
@@ -105,7 +104,7 @@ const Navigation: React.FC<Props> = (props: Props) => {
             }}
           >
             <Link className="title" to="/">
-              ESPIRITISMO
+              {title}
             </Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>

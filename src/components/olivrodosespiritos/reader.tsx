@@ -17,16 +17,10 @@ import {
 } from "../../services/cache";
 import { Swipe } from "../../services/gtag";
 import _ from "lodash";
-import "../../styles/reader.css";
-import SwipeLeftIcon from "@mui/icons-material/SwipeLeft";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import IconButton from "@mui/material/IconButton";
-import { navigate } from "gatsby";
+import ComponentQuestion from "./question";
 
 interface Props {
   dynamic?: boolean;
-  view?: boolean;
-  id?: string;
 }
 
 interface LoadedData {
@@ -150,82 +144,26 @@ const Reader: React.FC<Props> = (props: Props) => {
     </div>
   );
 
-  const renderQuestion = (question: Question) => {
-    return (
-      <div className="leading-5">
-        <div>
-          <div
-            dangerouslySetInnerHTML={{ __html: question.question }}
-            className="inline font-semibold text-lg sm:text-base uppercase"
-          />
-          {(props.view && <div className="h-1" />) || (
-            <IconButton
-              size="small"
-              aria-label="copy"
-              onClick={() =>
-                navigator.clipboard.writeText(
-                  `${location.origin}/olivrodosespiritos/share?id=${question.id}`
-                )
-              }
-            >
-              <ContentCopyIcon fontSize="inherit" className="dark:text-white" />
-            </IconButton>
-          )}
-        </div>
-        <div
-          dangerouslySetInnerHTML={{ __html: question.category }}
-          className="font-light text-base sm:text-sm"
-        />
-        <div className="font-light text-base sm:text-sm">
-          QUESTÃO&nbsp;
-          <span dangerouslySetInnerHTML={{ __html: question.id }} />
-        </div>
-        {(!loadedData || loadedData.index == 0) && !props.view && (
-          <SwipeLeftIcon
-            className="mt-2 ml-auto dark:text-white"
-            sx={{ display: "block" }}
-          />
-        )}
-        <div
-          dangerouslySetInnerHTML={{ __html: question.answer }}
-          className="font-normal text-lg sm:text-base text-justify pt-8"
-        />
-      </div>
-    );
-  };
+  const renderQuestion = (question: Question) => (
+    <ComponentQuestion
+      first={!loadedData || loadedData.index == 0}
+      question={question.question}
+      id={question.id}
+      category={question.category}
+      answer={question.answer}
+    />
+  );
 
-  const renderSwiper = (loadedData: LoadedData) => {
-    return (
-      <>
-        <Swiper
-          initialSlide={loadedData.index}
-          indexChange={(i) => storeIndex(i, loadedData)}
-          slides={loadedData.questions.map(renderQuestion)}
-        />
-      </>
-    );
-  };
-
-  const renderView = (loadedData: LoadedData) => {
-    const question = loadedData.questions.filter(
-      (q: Question) => q.id == props.id
-    );
-
-    if (question.length == 0) {
-      return navigate("/");
-    }
-
-    return renderQuestion(question[0]);
-  };
+  const renderSwiper = (loadedData: LoadedData) => (
+    <Swiper
+      initialSlide={loadedData.index}
+      indexChange={(i) => storeIndex(i, loadedData)}
+      slides={loadedData.questions.map(renderQuestion)}
+    />
+  );
 
   return (
-    <Layout>
-      {!loadedData
-        ? renderLoading()
-        : props.view
-        ? renderView(loadedData)
-        : renderSwiper(loadedData)}
-    </Layout>
+    <Layout>{!loadedData ? renderLoading() : renderSwiper(loadedData)}</Layout>
   );
 };
 

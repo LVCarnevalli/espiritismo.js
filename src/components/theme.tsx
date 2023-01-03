@@ -17,14 +17,14 @@ const ThemeToggler: React.FC = () => {
             />
           </ReactHelmet.Helmet>
           <IconButton
+            className={theme === "light" ? "text-black" : "text-white"}
             sx={{ marginLeft: "auto" }}
             size="medium"
             aria-label="theme"
+            color="inherit"
             onClick={() => toggleTheme(theme === "light" ? "dark" : "light")}
           >
-            <DarkModeIcon
-              className={theme === "light" ? "text-black" : "text-white"}
-            />
+            <DarkModeIcon color="inherit" />
           </IconButton>
         </>
       )}

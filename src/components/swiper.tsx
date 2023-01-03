@@ -1,5 +1,3 @@
-// https://swiperjs.com/react#virtual-slides
-
 import * as React from "react";
 import { Virtual, Pagination } from "swiper";
 import { Swiper as ReactSwiper, SwiperSlide, SwiperRef } from "swiper/react";

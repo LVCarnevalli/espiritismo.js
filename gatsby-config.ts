@@ -1,10 +1,12 @@
 import type { GatsbyConfig } from "gatsby";
 
+const siteUrl = process.env.URL || `https://www.espiritismo.dev`;
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Espiritismo`,
     description: `O aplicativo Espiritismo têm o objetivo de agrupar conteúdos espíritas e trazer até você de maneira fácil.`,
-    siteUrl: `https://www.espiritismo.dev`,
+    siteUrl,
     image: `/icon.png`,
     keywords: ["espiritismo", "espirita", "kardec", "o livro dos espiritos"],
   },
@@ -59,7 +61,32 @@ const config: GatsbyConfig = {
         sv: "6",
       },
     },
-    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        query: `
+          {
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+          }
+        `,
+        resolveSiteUrl: () => siteUrl,
+        resolvePages: ({ allSitePage: { nodes: allPages } }: any) => {
+          return allPages.map((page: any) => {
+            return { ...page };
+          });
+        },
+        serialize: ({ path, modifiedGmt }: any) => {
+          return {
+            url: path,
+            lastmod: modifiedGmt,
+          };
+        },
+      },
+    },
     "gatsby-plugin-postcss",
     "gatsby-plugin-dark-mode",
     "gatsby-plugin-offline",
@@ -73,8 +100,8 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "https://www.espiritismo.dev",
-        sitemap: "https://www.espiritismo.dev/sitemap-index.xml",
+        host: siteUrl,
+        sitemap: `${siteUrl}/sitemap-index.xml`,
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
