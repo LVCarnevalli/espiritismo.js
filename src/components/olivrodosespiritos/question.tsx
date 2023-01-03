@@ -24,37 +24,33 @@ const Question: React.FC<Props> = (props: Props) => {
             dangerouslySetInnerHTML={{ __html: props.question }}
             className="inline font-semibold text-lg sm:text-base uppercase"
           />
-          {(props.view && <div className="h-1" />) || (
-            <>
-              &nbsp;
-              <IconButton
-                size="small"
-                aria-label="copy"
-                color="inherit"
-                onClick={() => {
-                  if (!open) {
-                    setOpen(true);
-                    setTimeout(() => {
-                      setOpen(false);
-                    }, 1000);
-                  }
-                  navigator.clipboard.writeText(
-                    `${location.origin}${Path(props.id)}`
-                  );
-                }}
-              >
-                <ContentCopyIcon
-                  fontSize="inherit"
-                  className="dark:text-white"
-                  sx={{ zIndex: -1 }}
-                />
-              </IconButton>
-              {open && (
-                <div className="inline text-sm font-light dark:text-white">
-                  &nbsp;LINK COPIADO
-                </div>
-              )}
-            </>
+          &nbsp;
+          <IconButton
+            size="small"
+            aria-label="copy"
+            color="inherit"
+            onClick={() => {
+              if (!open) {
+                setOpen(true);
+                setTimeout(() => {
+                  setOpen(false);
+                }, 1000);
+              }
+              navigator.clipboard.writeText(
+                `${location.origin}${Path(props.id)}`
+              );
+            }}
+          >
+            <ContentCopyIcon
+              fontSize="inherit"
+              className="dark:text-white"
+              sx={{ zIndex: -1 }}
+            />
+          </IconButton>
+          {open && (
+            <div className="inline text-sm font-light dark:text-white">
+              &nbsp;LINK COPIADO
+            </div>
           )}
         </div>
         <div
