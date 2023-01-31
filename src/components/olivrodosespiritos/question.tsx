@@ -57,6 +57,7 @@ const Question: React.FC<Props> = (props: Props) => {
           <div
             dangerouslySetInnerHTML={{ __html: props.category }}
             className="font-light text-base sm:text-sm"
+            id="question-category"
           />
         </h3>
         <h3>
