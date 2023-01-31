@@ -14,6 +14,7 @@ import Button from "@mui/material/Button";
 import { Link } from "gatsby";
 import ThemeToggle from "./theme";
 import { navigate } from "gatsby";
+import DocSearch from "./docsearch";
 
 interface Props {
   window?: () => Window;
@@ -80,7 +81,11 @@ const Navigation: React.FC<Props> = (props: Props) => {
       <AppBar
         component="nav"
         elevation={0}
-        sx={{ backgroundColor: "var(--bgColor)", color: "var(--textColor)" }}
+        sx={{
+          backgroundColor: "var(--bgColor)",
+          color: "var(--textColor)",
+          zIndex: 199,
+        }}
       >
         <Toolbar sx={{ minHeight: "64px" }}>
           <IconButton
@@ -119,7 +124,10 @@ const Navigation: React.FC<Props> = (props: Props) => {
               </Button>
             ))}
           </Box>
-          <ThemeToggle />
+          <Box sx={{ marginLeft: "auto", display: "inline-flex" }}>
+            <DocSearch />
+            <ThemeToggle />
+          </Box>
         </Toolbar>
       </AppBar>
       <Box component="nav">
