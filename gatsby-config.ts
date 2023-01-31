@@ -1,6 +1,6 @@
 import type { GatsbyConfig } from "gatsby";
 
-const siteUrl = process.env.URL || `https://www.espiritismo.dev`;
+const siteUrl = process.env.URL || `https://espiritismo.dev`;
 
 const config: GatsbyConfig = {
   siteMetadata: {
