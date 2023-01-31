@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://espiritismo.dev//sitemap-index.xml
-Host: https://espiritismo.dev
+Sitemap: https://www.espiritismo.dev/sitemap-index.xml
+Host: https://www.espiritismo.dev
