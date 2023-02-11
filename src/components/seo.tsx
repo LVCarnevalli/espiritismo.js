@@ -13,8 +13,8 @@ const SEO = ({ title, description, pathname, children }: any) => {
   } = useSiteMetadata();
 
   const seo = {
-    title: title.substring(0, 60) || defaultTitle,
-    description: description.substring(0, 160) || defaultDescription,
+    title: title?.substring(0, 60) || defaultTitle,
+    description: description?.substring(0, 160) || defaultDescription,
     image: `${siteUrl}${image}`,
     url: `${siteUrl}${pathname || ``}`,
     keywords,
