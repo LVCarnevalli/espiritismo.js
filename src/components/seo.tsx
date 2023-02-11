@@ -13,8 +13,8 @@ const SEO = ({ title, description, pathname, children }: any) => {
   } = useSiteMetadata();
 
   const seo = {
-    title: title || defaultTitle,
-    description: description || defaultDescription,
+    title: title.substring(0, 60) || defaultTitle,
+    description: description.substring(0, 160) || defaultDescription,
     image: `${siteUrl}${image}`,
     url: `${siteUrl}${pathname || ``}`,
     keywords,
@@ -24,7 +24,11 @@ const SEO = ({ title, description, pathname, children }: any) => {
     <>
       <title>{seo.title}</title>
 
-      <ReactHelmet.Helmet></ReactHelmet.Helmet>
+      <ReactHelmet.Helmet
+        htmlAttributes={{
+          lang: "pt-BR",
+        }}
+      ></ReactHelmet.Helmet>
 
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />

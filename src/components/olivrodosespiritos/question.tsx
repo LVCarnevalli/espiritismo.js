@@ -21,6 +21,7 @@ const Question: React.FC<Props> = (props: Props) => {
       <div className="leading-5">
         <h1>
           <div
+            itemProp="question"
             dangerouslySetInnerHTML={{ __html: props.question }}
             className="inline font-semibold text-lg sm:text-base uppercase"
           />
@@ -55,6 +56,7 @@ const Question: React.FC<Props> = (props: Props) => {
         </h1>
         <h3>
           <div
+            itemProp="category"
             dangerouslySetInnerHTML={{ __html: props.category }}
             className="font-light text-base sm:text-sm"
             id="question-category"
@@ -74,6 +76,7 @@ const Question: React.FC<Props> = (props: Props) => {
         )}
         <h2>
           <div
+            itemProp="answer"
             dangerouslySetInnerHTML={{ __html: props.answer }}
             className="font-normal text-lg sm:text-base text-justify pt-8"
           />
