@@ -24,12 +24,9 @@ const SEO = ({ title, description, pathname, children }: any) => {
     <>
       <title>{seo.title}</title>
 
-      <ReactHelmet.Helmet
-        htmlAttributes={{
-          lang: "pt-BR",
-        }}
-      ></ReactHelmet.Helmet>
+      <ReactHelmet.Helmet></ReactHelmet.Helmet>
 
+      <meta http-equiv="content-language" content="pt-BR" />
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
       <meta name="image:alt" content={seo.description} />
