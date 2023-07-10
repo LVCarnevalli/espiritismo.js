@@ -28,10 +28,10 @@ html {
 /* Dark mode */
 body {
   --textColor: rgb(23 23 23);
-  --bgColor: #fff;
+  --bgColor: #f9f7f1;
 }
 body.dark {
-  --textColor: #fff;
+  --textColor: #f9f7f1;
   --bgColor: rgb(23 23 23);
 }
 body {

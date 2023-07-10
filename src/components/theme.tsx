@@ -13,7 +13,7 @@ const ThemeToggler: React.FC = () => {
           <ReactHelmet.Helmet>
             <meta
               name="theme-color"
-              content={theme === "light" ? "#ffffff" : "#171717"}
+              content={theme === "light" ? "#f9f7f1" : "#171717"}
             />
           </ReactHelmet.Helmet>
           <IconButton

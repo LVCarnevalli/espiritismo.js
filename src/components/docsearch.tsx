@@ -3,6 +3,7 @@ import { DocSearch as DocSearchReact } from "@docsearch/react";
 import { DocSearchHit } from "@docsearch/react/dist/esm/types";
 
 import "@docsearch/css";
+import "../styles/docsearch.css";
 
 const ReactHelmet = require("react-helmet");
 

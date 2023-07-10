@@ -1,0 +1,23 @@
+.DocSearch-Button-Keys,
+.DocSearch-Button-Placeholder {
+  display: none;
+}
+
+.DocSearch.DocSearch-Button {
+  background: unset;
+  box-shadow: unset;
+  outline: none;
+}
+
+.DocSearch.DocSearch-Button {
+  color: var(--textColor);
+  height: 40px;
+}
+
+.DocSearch.DocSearch-Button:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.DocSearch-Button .DocSearch-Search-Icon {
+  color: unset;
+}
