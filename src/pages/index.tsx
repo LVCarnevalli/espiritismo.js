@@ -53,39 +53,45 @@ const IndexPage: React.FC<PageProps> = () => {
               <Link to="">
                 <p>
                   <div className="head">
-                    <span className="headline hl3">Categorias</span>
+                    <span className="headline hl3">
+                      <LaunchIcon color="inherit" /> Categorias
+                    </span>
                   </div>
                 </p>
                 <p className="text-justify">
-                  EM BREVE: Busque por categoria, leia as questões da categoria
-                  escolhida.
+                  <span className="font-bold">EM BREVE:</span> Busque por
+                  categoria, leia as questões da categoria escolhida.
                 </p>
               </Link>
             </div>
-            <div className="collumn w-1/4">
-              <div className="head">
-                <span className="headline hl5">O Evangelho</span>
-                <p>
-                  <span className="headline">
-                    O evangelho segundo o espiritismo
-                  </span>
+            <Link to="">
+              <div className="collumn w-1/4">
+                <div className="head">
+                  <span className="headline hl5">O Evangelho</span>
+                  <p>
+                    <span className="headline">
+                      O evangelho segundo o espiritismo
+                    </span>
+                  </p>
+                </div>
+                <p className="text-justify">
+                  <LaunchIcon color="inherit" />{" "}
+                  <span className="font-bold">EM BREVE:</span> Passagens de
+                  Jesus com explicações dos espíritos retirados da obra do
+                  Kardec "O Evangelho Segundo o Espiritismo".
                 </p>
+                <figure className="figure">
+                  <img
+                    className="media dark:mix-blend-exclusion"
+                    src={JesusGIF}
+                    alt="Jesus"
+                  />
+                  <figcaption className="figcaption">Jesus</figcaption>
+                </figure>
               </div>
-              <p className="text-justify">
-                EM BREVE: Passagens de Jesus com explicações dos espíritos
-                retirados da obra do Kardec "O Evangelho Segundo o Espiritismo".
-              </p>
-              <figure className="figure">
-                <img
-                  className="media dark:mix-blend-exclusion"
-                  src={JesusGIF}
-                  alt="Jesus"
-                />
-                <figcaption className="figcaption">Jesus</figcaption>
-              </figure>
-            </div>
-            <div className="collumn w-1/4">
-              <Link to="/kardec">
+            </Link>
+            <Link to="/kardec">
+              <div className="collumn w-1/4">
                 <div className="head">
                   <span className="headline hl1">Kardec</span>
                   <p>
@@ -99,13 +105,13 @@ const IndexPage: React.FC<PageProps> = () => {
                   de pancadas, mensagens atribuídas ao além.{" "}
                   <span className="font-bold">Conheça quem foi Kardec...</span>
                 </p>
-              </Link>
-              <span className="citation">
-                "Todo efeito tem uma causa. Todo efeito inteligente tem uma
-                causa inteligente. O poder da causa inteligente está na razão da
-                grandeza do efeito."
-              </span>
-            </div>
+                <span className="citation">
+                  "Todo efeito tem uma causa. Todo efeito inteligente tem uma
+                  causa inteligente. O poder da causa inteligente está na razão
+                  da grandeza do efeito."
+                </span>
+              </div>
+            </Link>
             <div className="collumn w-1/4">
               <div className="head">
                 <span className="headline hl3">Preces</span>
